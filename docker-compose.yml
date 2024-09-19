@@ -1,0 +1,12 @@
+version: '3'
+services:
+  svelte-app:
+    build: .
+    ports:
+      - "5173:5173" # Maps port 5173 on the host to the container
+    volumes:
+      - .:/app # Mounts the project folder to the container for live development
+      - /app/node_modules # Ensures node_modules is not overwritten
+    command: npm run dev -- --host
+    environment:
+      - NODE_ENV=development
